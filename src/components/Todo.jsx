@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Checkbox, Row, Tag } from "antd";
+import { TodoContext } from "../context/TodoContext";
+import { setTodoStatus } from "../reducer/actions";
 
-function Todo({ name, priority }) {
-    const [checked, setChecked] = useState(false)
+function Todo({todo}) {
+    const { name, priority, status } = todo
+    const [state, dispatch] = useContext(TodoContext)
+    const handleChangeTodoStatus = (todo) => {
+        dispatch(setTodoStatus(todo))
+    }
     return (
         <Row justify={'space-between'}
-            style={{ marginBottom: '5px', ...(checked ? { textDecoration: 'line-through', opacity: 0.5 } : {}) }}
+            style={{ marginBottom: '5px', ...(status == 'Completed' ? { textDecoration: 'line-through', opacity: 0.5 } : {}) }}
         >
             <Checkbox
-                checked={checked} onChange={() => setChecked(!checked)}
+                checked={status == 'Completed'} onChange={() => handleChangeTodoStatus(todo)}
             >
                 {name}
             </Checkbox>
-            <Tag color={`${priority == 'Hight' ? 'red' : priority == 'Medium' ? 'blue' : 'gray'}`}>{priority}</Tag>
+            <Tag color={`${priority == 'High' ? 'red' : priority == 'Medium' ? 'blue' : 'gray'}`}>{priority}</Tag>
         </Row>
     )
 }
