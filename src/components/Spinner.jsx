@@ -6,7 +6,7 @@ function Spinner(){
         <div
             style={
                 {
-                    backgroundColor: 'rgba(0,0,0,.1)',
+                    backgroundColor: 'rgba(255,255,255,.6)',
                     position: 'absolute',
                     top: "0px",
                     left: "0px",
