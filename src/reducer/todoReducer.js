@@ -1,42 +1,51 @@
 export const initState = {
     todoList: [
-        {
-            id: 1,
-            name: "Learning ReactJS",
-            status: 'Todo',
-            priority: 'High'
-        },
-        {
-            id: 2,
-            name: "Learning NextJS",
-            status: 'Todo',
-            priority: 'Medium'
-        },
-        {
-            id: 3,
-            name: "Learning Piano",
-            status: 'Completed',
-            priority: 'Low'
-        },
+        // {
+        //     id: 1,
+        //     name: "Learning ReactJS",
+        //     status: 'Todo',
+        //     priority: 'High'
+        // },
+        // {
+        //     id: 2,
+        //     name: "Learning NextJS",
+        //     status: 'Todo',
+        //     priority: 'Medium'
+        // },
+        // {
+        //     id: 3,
+        //     name: "Learning Piano",
+        //     status: 'Completed',
+        //     priority: 'Low'
+        // },
     ],
     filters: {
         searchText: '',
         status: 'All',
         priorities: []
-    }
+    },
+    loading: false
 }
 
 const todoReducer = (state, action) => {
     switch (action.type) {
+        case 'todo/fetchTodos': {
+            return {
+                ...state,
+                todoList: action.payload
+            }
+        }
         case 'todo/setTodoStatus': {
             return {
                 ...state,
                 todoList: state.todoList.map(todo => {
-                    if (todo == action.payload ) {
-                        todo.status = todo.status == "Todo" ? "Completed" : "Todo"
-                        return todo
+                    if (todo.id == action.payload.id ) {
+                        return {
+                            ...todo,
+                            status: action.payload.status
+                        }
                     }
-                    return todo
+                    return todo;
                 })
             }
         }
@@ -65,13 +74,18 @@ const todoReducer = (state, action) => {
             }
         }
         case 'filter/setSearchPriorities': {
-            console.log(state);
             return {
                 ...state,
                 filters: {
                     ...state.filters,
                     priorities: action.payload
                 }
+            }
+        }
+        case 'spinner/toggle': {
+            return {
+                ...state,
+                loading: action.payload
             }
         }
         default: {

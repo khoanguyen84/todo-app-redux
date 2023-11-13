@@ -15,7 +15,8 @@ function App() {
       boxShadow: '0 0 10px 4px #333',
       padding: 20,
       borderRadius: 5,
-      height: '90vh'
+      height: '90vh',
+      position: "relative"
     }}>
       <Title style={{textAlign:'center'}}>TODO APP & REDUX CORE</Title>
       <FilterTodo/>

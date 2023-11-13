@@ -5,6 +5,13 @@ export const addTodo = (payload) => {
     }
 }
 
+export const fetchTodos = (payload) => {
+    return {
+        type: 'todo/fetchTodos',
+        payload
+    }
+}
+
 export const setTodoStatus = (payload) => {
     return {
         type: 'todo/setTodoStatus',
@@ -29,6 +36,13 @@ export const setSearchStatus = (payload) => {
 export const setSearchPriorities = (payload) => {
     return {
         type: 'filter/setSearchPriorities',
+        payload
+    }
+}
+
+export const toggleLoading = (payload) => {
+    return {
+        type: 'spinner/toggle',
         payload
     }
 }
