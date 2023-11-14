@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Checkbox, Row, Tag } from "antd";
+import { useDispatch } from "react-redux";
+import { todoSlice } from "../redux-toolkit/todoSlice";
 
-function Todo({ name, priority }) {
-    const [checked, setChecked] = useState(false)
+function Todo({ todo }) {
+    const { name, priority, status, id } = todo
+    const dispatch = useDispatch()
+    const handleChangeTodoStatus = () => {
+        dispatch(todoSlice.actions.toggleTodoState(todo))
+    }
     return (
         <Row justify={'space-between'}
-            style={{ marginBottom: '5px', ...(checked ? { textDecoration: 'line-through', opacity: 0.5 } : {}) }}
+            style={{ marginBottom: '5px', ...(status == 'Completed' ? { textDecoration: 'line-through', opacity: 0.5 } : {}) }}
         >
             <Checkbox
-                checked={checked} onChange={() => setChecked(!checked)}
+                checked={status == 'Completed'} onChange={handleChangeTodoStatus}
             >
                 {name}
             </Checkbox>
