@@ -24,13 +24,13 @@ export const remainTodoList = createSelector(
             )
         }
 
-        // if(!searchText && !priorities.length) {
-        //     return todoList.filter((todo) =>
-        //         todo.name.toLowerCase().includes(searchText.toLowerCase()) &&
-        //         priorities.includes(todo.priority) &&
-        //         (status != 'All' ? todo.status == status : todo)
-        //     )
-        // }
+        if(!searchText && !priorities.length) {
+            return todoList.filter((todo) =>
+                todo.name.toLowerCase().includes(searchText.toLowerCase()) &&
+                priorities.includes(todo.priority) &&
+                (status != 'All' ? todo.status == status : todo)
+            )
+        }
         return status != 'All' ? todoList.filter((todo) => todo.status == status) : todoList
     }
 )
