@@ -22,8 +22,8 @@ function FilterTodo() {
                 <Paragraph className="paragraph">Filter By Priority</Paragraph>
                 <Select mode="multiple" placeholder="Please select" 
                         style={{width: '100%'}} allowClear>
-                    <Select.Option value="Hight" label="Hight">
-                        <Tag color="red">Hight</Tag>
+                    <Select.Option value="High" label="High">
+                        <Tag color="red">High</Tag>
                     </Select.Option>
                     <Select.Option value="Medium" label="Medium">
                         <Tag color="blue">Medium</Tag>

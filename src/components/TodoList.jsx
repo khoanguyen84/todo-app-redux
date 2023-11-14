@@ -6,7 +6,7 @@ function TodoList() {
     return (
         <Row style={{ height: 'calc(100% - 40px)' }}>
             <Col span={24} style={{ height: 'calc(100% - 40px)', overflowY: 'auto'}}>
-                <Todo name={'Learning ReactJS'} priority={'Hight'} />
+                <Todo name={'Learning ReactJS'} priority={'High'} />
                 <Todo name={'Learning NextJS'} priority={'Medium'} />
                 <Todo name={'Learning Piano'} priority={'Low'} />
             </Col>
@@ -14,8 +14,8 @@ function TodoList() {
                 <Input.Group style={{ display: 'flex' }} compact>
                     <Input />
                     <Select defaultValue="Medium">
-                        <Select.Option value='Hight' label='Hight'>
-                            <Tag color="red">Hight</Tag>
+                        <Select.Option value='Hight' label='High'>
+                            <Tag color="red">High</Tag>
                         </Select.Option>
                         <Select.Option value='Medium' label='Medium'>
                             <Tag color="blue">Medium</Tag>

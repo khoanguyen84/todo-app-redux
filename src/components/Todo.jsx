@@ -12,7 +12,7 @@ function Todo({ name, priority }) {
             >
                 {name}
             </Checkbox>
-            <Tag color={`${priority == 'Hight' ? 'red' : priority == 'Medium' ? 'blue' : 'gray'}`}>{priority}</Tag>
+            <Tag color={`${priority == 'High' ? 'red' : priority == 'Medium' ? 'blue' : 'gray'}`}>{priority}</Tag>
         </Row>
     )
 }
